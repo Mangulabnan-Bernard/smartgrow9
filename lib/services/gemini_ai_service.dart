@@ -5,6 +5,7 @@ import 'package:image/image.dart' as img;
 import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
+import 'env_service.dart';
 
 class GeminiAnalysisResult {
   final String plantName;
@@ -29,7 +30,6 @@ class GeminiAnalysisResult {
 class GeminiAiService {
   static GenerativeModel? _model;
   static bool _initialized = false;
-  static const String _apiKey = 'AIzaSyCbZFIfVGLP2WGqRwbNZYwgNWqlMRun18E';
 
   // Philippines/local plant names mapping
   static const Map<String, String> _localPlantNames = {
@@ -55,15 +55,19 @@ class GeminiAiService {
   static Future<void> initialize() async {
     try {
       print("STEP 1: Initializing Gemini AI");
+      
+      // Ensure environment variables are loaded
+      await EnvService.initialize();
+      
       _model = GenerativeModel(
         model: "gemini-2.5-flash",
-        apiKey: _apiKey,
+        apiKey: EnvService.geminiApiKey,
       );
       _initialized = true;
       print('Gemini AI initialized successfully');
     } catch (e) {
       print("GEMINI INITIALIZATION FAILED: $e");
-      throw Exception('Failed to initialize Gemini AI: ');
+      throw Exception('Failed to initialize Gemini AI: $e');
     }
   }
 

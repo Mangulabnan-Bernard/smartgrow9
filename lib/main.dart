@@ -6,9 +6,13 @@ import 'pages/login_page.dart';
 import 'pages/loading_page.dart';
 import 'services/language_service.dart';
 import 'services/auth_service.dart';
+import 'services/env_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Environment Variables first
+  await EnvService.initialize();
 
   // Initialize Firebase
   await Firebase.initializeApp();
