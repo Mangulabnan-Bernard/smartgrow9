@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['garlic']
+
+roboflow:
+  workspace: garlic-hnnap
+  project: garlic-qu0jc
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/garlic-hnnap/garlic-qu0jc/dataset/1

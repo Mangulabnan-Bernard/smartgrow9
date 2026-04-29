@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>SmartGrow AI | Professional Plant Care</title>
+    <meta name="description" content="Professional plant care and disease diagnosis powered by AI">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#22c55e">
+    <meta name="msapplication-TileColor" content="#22c55e">
+    <meta name="msapplication-navbutton-color" content="#22c55e">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#22c55e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SmartGrow AI">
+    <meta name="application-name" content="SmartGrow AI">
+    
+    <!-- Dynamic Theme Color Script -->
+    <script>
+      // Set theme color based on user preference
+      const themeColor = localStorage.getItem('smartgrow_theme_color') || 'green';
+      const themeColors = {
+        green: '#22c55e',
+        blue: '#2563eb', 
+        purple: '#9333ea',
+        rose: '#e11d48',
+        orange: '#ea580c',
+        teal: '#0d9488'
+      };
+      
+      const color = themeColors[themeColor] || themeColors.green;
+      
+      // Update meta tags
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeColorMeta) themeColorMeta.setAttribute('content', color);
+      
+      const msTileColorMeta = document.querySelector('meta[name="msapplication-TileColor"]');
+      if (msTileColorMeta) msTileColorMeta.setAttribute('content', color);
+      
+      const msNavColorMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
+      if (msNavColorMeta) msNavColorMeta.setAttribute('content', color);
+      
+      const appleStatusMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+      if (appleStatusMeta) appleStatusMeta.setAttribute('content', color);
+      
+      // Apply theme class to body (wait for DOM to be ready)
+      document.addEventListener('DOMContentLoaded', () => {
+        if (document.body) {
+          document.body.classList.add(`theme-${themeColor}`);
+        }
+      });
+    </script>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="/icon-128x128.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/icon-512x512.png">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-96x96.png">
+    <link rel="shortcut icon" href="/icon-96x96.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('[PWA] Service Worker registered successfully:', registration);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content is available, show update notification
+                                    if (confirm('New version available! Reload to update?')) {
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('[PWA] Service Worker registration failed:', error);
+                    });
+            });
+        } else {
+            console.warn('[PWA] Service Workers are not supported in this browser');
+        }
+    </script>
+</body>
+</html>

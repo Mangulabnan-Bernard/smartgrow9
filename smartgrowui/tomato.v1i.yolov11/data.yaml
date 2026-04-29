@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['overripe tomato', 'ripe tomato', 'unripe tomato']
+
+roboflow:
+  workspace: bernards-workspace-cevy5
+  project: tomato-bgzx5-54iha
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/bernards-workspace-cevy5/tomato-bgzx5-54iha/dataset/1

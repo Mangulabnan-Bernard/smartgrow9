@@ -1,0 +1,40 @@
+{
+  "name": "SmartGrow AI",
+  "short_name": "SmartGrow",
+  "description": "Professional plant care and disease diagnosis powered by AI",
+  "theme_color": "#22c55e",
+  "background_color": "#f8fafc",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["health", "productivity", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Scan Plant",
+      "short_name": "Scan",
+      "description": "Quick plant disease scan",
+      "url": "/scanner",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard", 
+      "description": "View plant health dashboard",
+      "url": "/",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

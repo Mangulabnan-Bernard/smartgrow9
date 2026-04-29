@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "834079209309",
+    "project_id": "smart-grow-87165",
+    "storage_bucket": "smart-grow-87165.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834079209309:android:8ce39481bbfc36400a5ab4",
+        "android_client_info": {
+          "package_name": "com.example.smartgrow9"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkNiww4clxWXNzHeISQA0kYgxI40abVjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834079209309:android:0f6faa69d8709e460a5ab4",
+        "android_client_info": {
+          "package_name": "com.example.smartgrow9"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkNiww4clxWXNzHeISQA0kYgxI40abVjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

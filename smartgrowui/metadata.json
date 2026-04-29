@@ -1,0 +1,8 @@
+
+{
+  "name": "SmartGrow AI",
+  "description": "AI-powered plant disease diagnosis and recovery monitoring web application with multi-language support and gamification.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
